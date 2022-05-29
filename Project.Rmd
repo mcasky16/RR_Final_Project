@@ -1,6 +1,6 @@
 ---
 title: "Project"
-author: "T Makuwerere , Mark , Sandiles"
+author: "T Makuwerere , Mark Asamoah , Sandiles N "
 date: "5/29/2022"
 output: html_document
 ---
