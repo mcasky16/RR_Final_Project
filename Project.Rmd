@@ -7,23 +7,55 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+suppressPackageStartupMessages( library(tidyverse))
+suppressPackageStartupMessages( library(ggthemes))
+suppressPackageStartupMessages( library(plotly))
+suppressPackageStartupMessages(library(dplyr))
 ```
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+COLUMN NAMES
+names(df)
+##  [1] "X"                                                   
+##  [2] "Student.ID"                                          
+##  [3] "Well.versed.with.the.subject"                        
+##  [4] "Explains.concepts.in.an.understandable.way"          
+##  [5] "Use.of.presentations"                                
+##  [6] "Degree.of.difficulty.of.assignments"                 
+##  [7] "Solves.doubts.willingly"                             
+##  [8] "Structuring.of.the.course"                           
+##  [9] "Provides.support.for.students.going.above.and.beyond"
+## [10] "Course.recommendation.based.on.relevance"
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+POTENTIAL QUESTIONS TO BE ANSWERED
+How is “course recommendation based on relevance distributed” as density plot?
 
-```{r cars}
-summary(cars)
+Average use of presentation
+
+CORRELATION between solves doubt AND explain concept in an understandable way
+
+Bar chart student well versed with the topic
+
+on the scale to one to 10 how much difficult assignment is 6- scale and 7-scale
+
+Bar chart rating for teacher that Solves doubt willingly
+
+REMOVING MISSING VALUES TO CLEAN THE DATA AND AVOID ERRORS
+df_nona implies df with no null values
+```{r}
+df_nona = df%>%
+drop_na()
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
+How is “course recommendation based on relevance distributed” as density plot?
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+ggplot(df_nona , aes(x=Course.recommendation.based.on.relevance)) + 
+  geom_density(bins=1, color="black", fill="orange",
+               linetype="dashed")+
+  labs(title = 'Course.recommendation.based.on.relevance',
+       subtitle= 'Mumbai student feedback' , x= 'Course.recommendation.based.on.relevance',y= 'Frequency') +
+  ggthemes::theme_solarized_2()
 ```
 whjdmk kd'
