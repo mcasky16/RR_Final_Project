@@ -13,8 +13,10 @@ suppressPackageStartupMessages( library(plotly))
 suppressPackageStartupMessages(library(dplyr))
 ```
 
-## R Markdown
-
+## Importing the dataset
+```{r}
+data <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/student_feedback.csv', sep = ',')
+```
 COLUMN NAMES
 names(df)
 ##  [1] "X"                                                   
@@ -58,4 +60,5 @@ ggplot(df_nona , aes(x=Course.recommendation.based.on.relevance)) +
        subtitle= 'Mumbai student feedback' , x= 'Course.recommendation.based.on.relevance',y= 'Frequency') +
   ggthemes::theme_solarized_2()
 ```
-whjdmk kd'
+
+
