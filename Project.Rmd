@@ -15,7 +15,7 @@ suppressPackageStartupMessages(library(dplyr))
 
 ## Importing the dataset
 ```{r}
-data <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/student_feedback.csv', sep = ',')
+df <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/student_feedback.csv', sep = ',')
 ```
 COLUMN NAMES
 names(df)
@@ -59,6 +59,25 @@ ggplot(df_nona , aes(x=Course.recommendation.based.on.relevance)) +
   labs(title = 'Course.recommendation.based.on.relevance',
        subtitle= 'Mumbai student feedback' , x= 'Course.recommendation.based.on.relevance',y= 'Frequency') +
   ggthemes::theme_solarized_2()
+```
+## Average use of presentation
+```{r}
+df_nona %>%
+summarize(average_use_ofpresentation= round(mean(Use.of.presentations)))
+```
+##   average_use_ofpresentation
+## 1                          6
+on the scale of 1-10 average ratimg that student feel that they will use presentation for topic is 6
+
+on the scale to one to 10 ho much difficult assignment is 6- scale and 7-scale
+```{r}
+df_nona %>%
+  filter(Degree.of.difficulty.of.assignments %in% c('6', '7'))%>%
+  ggplot() + 
+  geom_density(aes(x = Degree.of.difficulty.of.assignments , fill = Degree.of.difficulty.of.assignments , alpha = 0.1))+
+  labs(title = 'Degree.of.difficulty.of.assignments',
+       subtitle= 'Mumbai student survey' , x= 'Degree.of.difficulty.of.assignments',y= 'Frequency') +
+  ggthemes::theme_stata()
 ```
 
 
