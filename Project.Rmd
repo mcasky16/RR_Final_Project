@@ -1,6 +1,6 @@
 ---
 title: "Project"
-author: "T Makuwerere , Mark Asamoah , Sandiles N "
+author: "Tendai Makuwerere , Mark Asamoah , Sandile Nhlalo-Sibanda "
 date: "5/29/2022"
 output: 
   html_document:
@@ -116,4 +116,26 @@ df_nona %>%
  
   ggthemes::theme_gdocs()->gg....Solves.doubts.willingly
 plotly:: ggplotly(gg....Solves.doubts.willingly)
+```
+
+## CORRELATION BETWEEN solves doubt AND explain concept in an understandable way
+
+```{r warning=FALSE}
+df_nona%>%
+  select(c('Solves.doubts.willingly' ,'Explains.concepts.in.an.understandable.way')) %>%
+  cor()
+
+```
+correlation less than 0  indicate a negative correlation in our case it is -0.0258 
+
+## SCATTER PLOT  
+Since the points or values are range in absolute integer the scatter plot is not showing good result
+```{r message=FALSE, warning=FALSE}
+df_nona%>%
+  select(c('Solves.doubts.willingly' ,'Explains.concepts.in.an.understandable.way')) %>%
+  ggplot(aes(x= Solves.doubts.willingly , y = Explains.concepts.in.an.understandable.way))+
+  geom_point(color = "#6c094f")+
+  geom_smooth(method = lm)+
+  labs(title = "correlation Scatter Plot" )
+
 ```
