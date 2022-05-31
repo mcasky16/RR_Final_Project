@@ -97,3 +97,17 @@ df_nona %>%
 plotly:: ggplotly(scale....)
 ```
 
+
+## Bar chart rating for teacher that Solves doubt willingly
+
+```{r warning=FALSE}
+df_nona %>%
+  group_by(Solves.doubts.willingly)%>%
+  count(sort =TRUE)%>%
+  ggplot() +
+  geom_col(aes(x= reorder(Solves.doubts.willingly, n) , y = n), fill = "purple" )  + 
+  geom_label(aes(x= reorder(Solves.doubts.willingly , n) , y = n , label=n))+
+ 
+  ggthemes::theme_gdocs()->gg....Solves.doubts.willingly
+plotly:: ggplotly(gg....Solves.doubts.willingly)
+```
