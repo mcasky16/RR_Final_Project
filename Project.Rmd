@@ -2,7 +2,13 @@
 title: "Project"
 author: "T Makuwerere , Mark Asamoah , Sandiles N "
 date: "5/29/2022"
-output: html_document
+output: 
+  html_document:
+    number_sections: true
+    toc_float: true
+    toc: true
+    toc_depth: 4
+    theme: united
 ---
 
 ```{r setup, include=FALSE}
