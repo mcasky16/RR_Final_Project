@@ -240,7 +240,8 @@ df_2_nona%>%
 
 ```
 
-correlation less than 0  indicate a negative correlation in our case it is -0.0569 
+The sample correlation coefficient is a measure of the closeness of association of the points in a scatter plot to a linear regression line based on those points, as in the calculation above, possible values of the correlation coefficient range from -1 to +1, with -1 indicating a perfectly linear negative, i.e., inverse, correlation (sloping downward) and +1 indicating a perfectly linear positive correlation (sloping upward).
+Correlation less than 0  indicate a negative correlation in our case it is -0.0569. Below is the corresponding scatter plot. 
 
 ## SCATTER PLOT  for Survey Data
 Since the points or values are range in absolute integer the scatter plot is not showing good result
