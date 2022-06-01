@@ -149,3 +149,8 @@ df_nona%>%
 
 ```
 
+## Importing the Survey dataset
+
+```{r}
+df <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/RR_survey.csv', sep = ',')
+```
