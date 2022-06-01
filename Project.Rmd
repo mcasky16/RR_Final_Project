@@ -155,6 +155,7 @@ df_nona%>%
 df_2 <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/RR_survey.csv', sep = ',')
 ```
 
+
 REMOVING MISSING VALUES TO CLEAN THE DATA AND AVOID ERRORS
 
 df_2_nona implies df with no null values
@@ -179,3 +180,4 @@ df_2_nona %>%
   ggthemes::theme_economist_white()-> scale.... 
 plotly:: ggplotly(scale....)
 ```
+
