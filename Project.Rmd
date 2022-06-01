@@ -149,8 +149,6 @@ df_nona%>%
 
 ```
 
-
-
 ### Importing Dataset from the survey
 
 ```{r}
