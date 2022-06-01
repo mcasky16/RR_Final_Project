@@ -183,10 +183,10 @@ df_2_nona %>%
 summarize(average_use_ofpresentation= round(mean(Use.of.presentations)))
 ```
 ##   average_use_ofpresentation
-## 1                          6
-on the scale of 1-10 average ratimg that student feel that they will use presentation for topic is 6
+## 1                          5
+on the scale of 1-10 average ratimg that student feel that they will use presentation for topic is 5
 
-on the scale to one to 10 ho much difficult assignment is 6- scale and 7-scale
+on the scale to one to 10 ho much difficult assignment is 5- scale and 7-scale
 
 ```{r}
 df_2_nona %>%
