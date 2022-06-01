@@ -182,6 +182,21 @@ plotly:: ggplotly(scale....)
 ```
 
 
+## Bar chart rating for teacher that Solves doubt willingly on survey data
+
+```{r warning=FALSE}
+df_2_nona %>%
+  group_by(Solves.doubts.willingly)%>%
+  count(sort =TRUE)%>%
+  ggplot() +
+  geom_col(aes(x= reorder(Solves.doubts.willingly, n) , y = n), fill = "purple" )  + 
+  geom_label(aes(x= reorder(Solves.doubts.willingly , n) , y = n , label=n))+
+ 
+  ggthemes::theme_gdocs()->gg....Solves.doubts.willingly
+plotly:: ggplotly(gg....Solves.doubts.willingly)
+```
+
+
 ## CORRELATION BETWEEN solves doubt AND explain concept in an understandable way for Survey Data
 
 ```{r warning=FALSE}
@@ -190,6 +205,7 @@ df_2_nona%>%
   cor()
 
 ```
+
 correlation less than 0  indicate a negative correlation in our case it is -0.0569 
 
 ## SCATTER PLOT  for Survey Data
