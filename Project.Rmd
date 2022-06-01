@@ -19,11 +19,15 @@ suppressPackageStartupMessages(library(plotly))
 suppressPackageStartupMessages(library(dplyr))
 ```
 
-## Importing the dataset
+## Importing the original dataset
+
 ```{r}
 df <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/student_feedback.csv', sep = ',')
 ```
+
+
 COLUMN NAMES
+
 names(df)
 ##  [1] "X"                                                   
 ##  [2] "Student.ID"                                          
@@ -50,7 +54,9 @@ on the scale to one to 10 how much difficult assignment is 6- scale and 7-scale
 Bar chart rating for teacher that Solves doubt willingly
 
 REMOVING MISSING VALUES TO CLEAN THE DATA AND AVOID ERRORS
+
 df_nona implies df with no null values
+
 ```{r}
 df_nona = df%>%drop_na()
 ```
@@ -65,7 +71,10 @@ ggplot(df_nona , aes(x=Course.recommendation.based.on.relevance)) +
        subtitle= 'Mumbai student feedback' , x= 'Course.recommendation.based.on.relevance',y= 'Frequency') +
   ggthemes::theme_solarized_2()
 ```
+
+
 ## Average use of presentation
+
 ```{r}
 df_nona %>%
 summarize(average_use_ofpresentation= round(mean(Use.of.presentations)))
@@ -138,4 +147,12 @@ df_nona%>%
   geom_smooth(method = lm)+
   labs(title = "correlation Scatter Plot" )
 
+```
+
+
+
+### Importing Dataset from the survey
+
+```{r}
+df_2 <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/RR_survey.csv', sep = ',')
 ```
