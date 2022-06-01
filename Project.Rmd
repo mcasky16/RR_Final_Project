@@ -154,3 +154,51 @@ df_nona%>%
 ```{r}
 df_2 <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/RR_survey.csv', sep = ',')
 ```
+
+
+REMOVING MISSING VALUES TO CLEAN THE DATA AND AVOID ERRORS
+
+df_2_nona implies df with no null values
+
+```{r}
+df_2_nona = df_2%>%drop_na()
+```
+
+## Bar chart student well versed with the topic on Survey Data
+
+```{r warning=FALSE}
+df_2_nona %>%
+  group_by(Well.versed.with.the.subject)%>%
+  count(sort =TRUE) %>%
+  head(10)%>%
+  ggplot() +
+  geom_col(aes(x= reorder(Well.versed.with.the.subject , n) , y = n), fill = "Pink")  + 
+  geom_label(aes(x= reorder(Well.versed.with.the.subject , n) , y = n , label=n))+
+  coord_flip() +
+  labs(title = 'no. of student who are well versed ',
+        x= 'scale',y= 'Frequency')+
+  ggthemes::theme_economist_white()-> scale.... 
+plotly:: ggplotly(scale....)
+```
+
+## CORRELATION BETWEEN solves doubt AND explain concept in an understandable way for Survey Data
+
+```{r warning=FALSE}
+df_2_nona%>%
+  select(c('Solves.doubts.willingly' ,'Explains.concepts.in.an.understandable.way')) %>%
+  cor()
+
+```
+correlation less than 0  indicate a negative correlation in our case it is -0.0569 
+
+## SCATTER PLOT  for Survey Data
+Since the points or values are range in absolute integer the scatter plot is not showing good result
+```{r message=FALSE, warning=FALSE}
+df_2_nona%>%
+  select(c('Solves.doubts.willingly' ,'Explains.concepts.in.an.understandable.way')) %>%
+  ggplot(aes(x= Solves.doubts.willingly , y = Explains.concepts.in.an.understandable.way))+
+  geom_point(color = "#6c094f")+
+  geom_smooth(method = lm)+
+  labs(title = "correlation Scatter Plot" )
+
+```
