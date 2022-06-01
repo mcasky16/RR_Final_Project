@@ -181,6 +181,7 @@ df_2_nona %>%
 plotly:: ggplotly(scale....)
 ```
 
+<<<<<<< HEAD
 
 ## CORRELATION BETWEEN solves doubt AND explain concept in an understandable way for Survey Data
 
@@ -204,3 +205,5 @@ df_2_nona%>%
 
 ```
 
+=======
+>>>>>>> origin/sandile
