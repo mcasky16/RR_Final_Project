@@ -154,4 +154,3 @@ df_nona%>%
 ```{r}
 df_2 <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/RR_survey.csv', sep = ',')
 ```
-
