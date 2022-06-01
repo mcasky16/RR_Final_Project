@@ -181,6 +181,7 @@ df_2_nona %>%
 plotly:: ggplotly(scale....)
 ```
 
+
 ## CORRELATION BETWEEN solves doubt AND explain concept in an understandable way for Survey Data
 
 ```{r warning=FALSE}
@@ -202,3 +203,4 @@ df_2_nona%>%
   labs(title = "correlation Scatter Plot" )
 
 ```
+
