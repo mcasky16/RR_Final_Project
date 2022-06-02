@@ -166,7 +166,7 @@ df_2_nona = df_2%>%drop_na()
 
 How is “course recommendation based on relevance distributed” as density plot?
 
-```{r pressure, echo=FALSE}
+```{r echo=FALSE}
 ggplot(df_nona , aes(x=Course.recommendation.based.on.relevance)) + 
   geom_density(bins=1, color="black", fill="orange",
                linetype="dashed")+
