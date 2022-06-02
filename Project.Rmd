@@ -97,6 +97,8 @@ df_nona %>%
 
 ## Bar chart student well versed with the topic
 
+This plot shows how students in the original data well understood the topic that were conducted by their favorite lecturers. In this plot below, it could be seen that, students understanding of the course ranged from 5 to 10 on the scale and majority of the students indicating 9 as their level of understanding which is very high.
+
 ```{r warning=FALSE}
 df_nona %>%
   group_by(Well.versed.with.the.subject)%>%
@@ -114,6 +116,8 @@ plotly:: ggplotly(scale....)
 
 
 ## Bar chart rating for teacher that Solves doubt willingly
+
+A bar plot representation was used to answer the question regarding how teachers are willing to solve students doubt. From the plot it could be seen that, majority of the students rated 6. But we can tell from the heights of the bars that, the differences in the rating were not that huge so one can conclude the respondents were almost evenly spread.
 
 ```{r warning=FALSE}
 df_nona %>%
@@ -200,13 +204,17 @@ df_2_nona %>%
 
 ## Bar chart student well versed with the topic on Survey Data
 
+Here we checked for the frequencies of the respondents from the survey data and compare how well they understand the course from their favorite lecturers.
+
+From our plot below, unlike the results from the main data, the respondents were rather not well versed or understand the course from their favorite lecturers since majority of the respondents rather chose not to be well versed with the subjects. However, quite a number of them also chose a scale above 5, which is a reflection of the main original data.
+
 ```{r warning=FALSE}
 df_2_nona %>%
   group_by(Well.versed.with.the.subject)%>%
   count(sort =TRUE) %>%
   head(10)%>%
   ggplot() +
-  geom_col(aes(x= reorder(Well.versed.with.the.subject , n) , y = n), fill = "Pink")  + 
+  geom_col(aes(x= reorder(Well.versed.with.the.subject , n) , y = n), fill = "Green")  + 
   geom_label(aes(x= reorder(Well.versed.with.the.subject , n) , y = n , label=n))+
   coord_flip() +
   labs(title = 'no. of student who are well versed ',
@@ -217,6 +225,8 @@ plotly:: ggplotly(scale....)
 
 
 ## Bar chart rating for teacher that Solves doubt willingly on survey data
+
+The results in this plot look much different from the original data, but there also seem to be a reflection of the main dataset in the middle belt of the plot when the respondents were evenly spread. But comparing the difference between the scale with least respondents and that of the scale with much responses we can tell the data is very much varying.
 
 ```{r warning=FALSE}
 df_2_nona %>%
