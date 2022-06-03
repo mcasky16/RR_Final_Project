@@ -21,47 +21,47 @@ suppressPackageStartupMessages(library(dplyr))
 
 ## Importing the original dataset
 
+Here we read our data and store into the variable `df`. The dataset was taken from the original project available [here](https://www.kaggle.com/code/kashishbhatia2137071/data-analysis-student-survey/data)
+
 ```{r}
 df <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/student_feedback.csv', sep = ',')
 ```
 
 
 COLUMN NAMES
+Taking a look at our column names.
 
+```{r}
 names(df)
-##  [1] "X"                                                   
-##  [2] "Student.ID"                                          
-##  [3] "Well.versed.with.the.subject"                        
-##  [4] "Explains.concepts.in.an.understandable.way"          
-##  [5] "Use.of.presentations"                                
-##  [6] "Degree.of.difficulty.of.assignments"                 
-##  [7] "Solves.doubts.willingly"                             
-##  [8] "Structuring.of.the.course"                           
-##  [9] "Provides.support.for.students.going.above.and.beyond"
-## [10] "Course.recommendation.based.on.relevance"
+```
 
-POTENTIAL QUESTIONS TO BE ANSWERED
-How is “course recommendation based on relevance distributed” as density plot?
 
-Average use of presentation
+## POTENTIAL QUESTIONS TO BE ANSWERED
 
-CORRELATION between solves doubt AND explain concept in an understandable way
+**How is “course recommendation based on relevance distributed” as density plot?**
 
-Bar chart student well versed with the topic
+**Average use of presentation**
 
-on the scale to one to 10 how much difficult assignment is 6- scale and 7-scale
+**CORRELATION between solves doubt AND explain concept in an understandable way**
 
-Bar chart rating for teacher that Solves doubt willingly
+**Bar chart student well versed with the topic**
 
-REMOVING MISSING VALUES TO CLEAN THE DATA AND AVOID ERRORS
+**On the scale to one to 10 how much difficult assignment is 6- scale and 7-scale**
 
-df_nona implies df with no null values
+**Bar chart rating for teacher that Solves doubt willingly**
+
+
+## REMOVING MISSING VALUES TO CLEAN THE DATA AND AVOID ERRORS
+
+`df_nona` implies `df` with no null values
 
 ```{r}
 df_nona = df%>%drop_na()
 ```
 
-How is “course recommendation based on relevance distributed” as density plot?
+## How is “course recommendation based on relevance distributed” as density plot?
+
+From the plot below it could be seen that, most of the students chose to recommend the course to others since the plot is more densed at the point of the scale reading from 5.0 to 10 which is above the average of the scale. However, this difference is not that much across the scale.  
 
 ```{r pressure, echo=FALSE}
 ggplot(df_nona , aes(x=Course.recommendation.based.on.relevance)) + 
@@ -79,11 +79,13 @@ ggplot(df_nona , aes(x=Course.recommendation.based.on.relevance)) +
 df_nona %>%
 summarize(average_use_ofpresentation= round(mean(Use.of.presentations)))
 ```
-##   average_use_ofpresentation
-## 1                          6
-on the scale of 1-10 average ratimg that student feel that they will use presentation for topic is 6
 
-on the scale to one to 10 ho much difficult assignment is 6- scale and 7-scale
+The average use of presentation was given to be 6 on the scale from the calculation above. This tells that, more students prefer courses that has some sort of presentation by the instructors.
+
+
+## On the scale to one to 10 ho much difficult assignment is 6- scale and 7-scale?
+
+In this plot, it was checked from the scale 6 to scale 7, how the students are distibuted across the scale. It can be seen that there is quiet a large number of students who are rating between 6 to 6.5 than from 6.5 to 7. This explains that, the students are more likely to rate difficulty in assignment on the scle of 6 than on 7.
 
 ```{r}
 df_nona %>%
@@ -131,7 +133,10 @@ df_nona %>%
 plotly:: ggplotly(gg....Solves.doubts.willingly)
 ```
 
+
 ## CORRELATION BETWEEN solves doubt AND explain concept in an understandable way
+
+The sample correlation coefficient is a measure of the closeness of association of the points in a scatter plot to a linear regression line based on those points, as in the  calculation above, possible values of the correlation coefficient range from -1 to +1, with -1 indicating a perfectly linear negative, i.e., inverse, correlation (sloping downward)  and +1 indicating a perfectly linear positive correlation (sloping upward). 
 
 ```{r warning=FALSE}
 df_nona%>%
@@ -139,10 +144,15 @@ df_nona%>%
   cor()
 
 ```
-correlation less than 0  indicate a negative correlation in our case it is -0.0258 
 
-## SCATTER PLOT  
-Since the points or values are range in absolute integer the scatter plot is not showing good result
+Correlation less than 0 indicate a negative correlation in our case it is -0.0258, however this correlation is almost insignificant, showing that there is little to no correlation. Below is the corresponding scatter plot. This is consistent with the initial research upon reproduction.
+
+
+## SCATTER PLOT
+
+Since the points or values are range in absolute integer the scatter plot is not showing good result. This is a 2D scatter plot showing how the lecturer explains concepts in an understandable way versus the lecturer solving doubts willingly. The visuals show that there is a general average or constant relationship so to say on the explanation of concepts in an 
+understanding way and solving doubts willingly. There is however little variance in the data.
+
 ```{r message=FALSE, warning=FALSE}
 df_nona%>%
   select(c('Solves.doubts.willingly' ,'Explains.concepts.in.an.understandable.way')) %>%
@@ -153,7 +163,10 @@ df_nona%>%
 
 ```
 
-### Importing Dataset from the survey data
+
+## Importing Dataset from the survey data.
+
+Here we import the data from our Google form survey. The dataframe is named `df_2`
 
 ```{r}
 df_2 <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/main/RR_survey.csv', sep = ',')
@@ -162,20 +175,23 @@ df_2 <- read.csv2('https://raw.githubusercontent.com/mcasky16/RR_Final_Project/m
 
 REMOVING MISSING VALUES TO CLEAN THE DATA AND AVOID ERRORS
 
-df_2_nona implies df with no null values
+`df_2_nona` implies `df_2` with no null values
 
 ```{r}
 df_2_nona = df_2%>%drop_na()
 ```
 
-How is “course recommendation based on relevance distributed” as density plot?
+
+## How is “course recommendation based on relevance distributed” as density plot?
+
+Unlike the original data, the density plot shows that the students woould not recommend this course to others based on relevance. hence the plot is more dense on the left side. This could be to the fact that, students take up this course based on other reasons rather than relevance.
 
 ```{r echo=FALSE}
-ggplot(df_nona , aes(x=Course.recommendation.based.on.relevance)) + 
-  geom_density(bins=1, color="black", fill="orange",
+ggplot(df_2_nona , aes(x=Course.recommendation.based.on.relevance)) + 
+  geom_density(bins=1, color="black", fill="brown",
                linetype="dashed")+
   labs(title = 'Course.recommendation.based.on.relevance',
-       subtitle= 'Mumbai student feedback' , x= 'Course.recommendation.based.on.relevance',y= 'Frequency') +
+       subtitle= 'Survey Data' , x= 'Course.recommendation.based.on.relevance',y= 'Frequency') +
   ggthemes::theme_solarized_2()
 ```
 
@@ -186,11 +202,12 @@ ggplot(df_nona , aes(x=Course.recommendation.based.on.relevance)) +
 df_2_nona %>%
 summarize(average_use_ofpresentation= round(mean(Use.of.presentations)))
 ```
-##   average_use_ofpresentation
-## 1                          5
-on the scale of 1-10 average ratimg that student feel that they will use presentation for topic is 5
 
-on the scale to one to 10 ho much difficult assignment is 5- scale and 7-scale
+The average use of presentation was given to be 5 on the scale from the calculation above. This tells that, more students prefer courses that has some sort of presentation by the instructors. This is more or less a reflection the original dataset.
+
+## On the scale to one to 10 ho much difficult assignment is 5- scale and 7-scale on Survey data.
+
+In this plot, it was checked from the scale 6 to scale 7, how the students are distibuted across the scale. It can be seen that there is quiet a large number of students who are rating between 6.5 to 7 than from 6 to 6.5. This explains that, the students are more likely to rate difficulty in assignment on the scale of 7 than on 6.
 
 ```{r}
 df_2_nona %>%
@@ -198,7 +215,7 @@ df_2_nona %>%
   ggplot() + 
   geom_density(aes(x = Degree.of.difficulty.of.assignments , fill = Degree.of.difficulty.of.assignments , alpha = 0.1))+
   labs(title = 'Degree.of.difficulty.of.assignments',
-       subtitle= 'Mumbai student survey' , x= 'Degree.of.difficulty.of.assignments',y= 'Frequency') +
+       subtitle= 'Survey data set' , x= 'Degree.of.difficulty.of.assignments',y= 'Frequency') +
   ggthemes::theme_stata()
 ```
 
@@ -233,7 +250,7 @@ df_2_nona %>%
   group_by(Solves.doubts.willingly)%>%
   count(sort =TRUE)%>%
   ggplot() +
-  geom_col(aes(x= reorder(Solves.doubts.willingly, n) , y = n), fill = "purple" )  + 
+  geom_col(aes(x= reorder(Solves.doubts.willingly, n) , y = n), fill = "Orange" )  + 
   geom_label(aes(x= reorder(Solves.doubts.willingly , n) , y = n , label=n))+
  
   ggthemes::theme_gdocs()->gg....Solves.doubts.willingly
@@ -254,14 +271,33 @@ The sample correlation coefficient is a measure of the closeness of association 
 Correlation less than 0  indicate a negative correlation in our case it is -0.0569. Below is the corresponding scatter plot. 
 
 ## SCATTER PLOT  for Survey Data
-Since the points or values are range in absolute integer the scatter plot is not showing good result
+
+Since the points or values are range in absolute integer the scatter plot is not showing good result. This is a 2D scatter plot showing how the lecturer explains concepts in an understandable way versus the lecturer solving doubts willingly. The visuals show that there is a general average or constant relationship so to say on the explanation of concepts in an 
+understanding way and solving doubts willingly. Compared to the initial study, there is however more variance in the data. 
+We can however notice the difference in the distribution of the data between the original and the survey data.
+
 ```{r message=FALSE, warning=FALSE}
 df_2_nona%>%
   select(c('Solves.doubts.willingly' ,'Explains.concepts.in.an.understandable.way')) %>%
   ggplot(aes(x= Solves.doubts.willingly , y = Explains.concepts.in.an.understandable.way))+
-  geom_point(color = "#6c094f")+
+  geom_point(color = "#6c67f8")+
   geom_smooth(method = lm)+
   labs(title = "correlation Scatter Plot" )
 
 ```
+## Conclusions
+
+These are our final conclusions of the study and what has been reproduced.
+
+* We conclude that students tends to more versed in topics conducted by their favorite instructors in the case of the original data set and but not same can be said about the survey data
+
+* Most students would recommend the course base on relevance in the original data set but not in the case of the survey data.
+
+* Students from both data set almost had the same thoughts regarding the difficulty in assignments judging from the nature of the curve.
+
+## Limitations
+
+As a limitation, the survey data was too small. And also the location from which both data has been collected may be reason for the difference in results. 
+
+
 
